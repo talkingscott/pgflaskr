@@ -7,6 +7,20 @@ This started with the flask tutorial at http://flask.pocoo.org/docs/0.10/tutoria
 * Added packaging to run on Heroku (https://devcenter.heroku.com/articles/getting-started-with-python#introduction)
 * Configured gunicorn to use gevent workers (http://docs.gunicorn.org/en/develop/configure.html)
 
+# Deploy
+
+```bash
+git clone https://github.com/talkingscott/pgflaskr.git
+cd pgflaskr
+heroku create
+git push heroku master
+heroku run db_init
+heroku run migrate
+heroku ps:scale web=1
+heroku ps
+heroku open
+```
+
 # License
 
 The flask tutorial is © Copyright 2013, Armin Ronacher.
